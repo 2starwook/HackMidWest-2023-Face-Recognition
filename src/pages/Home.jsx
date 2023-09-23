@@ -22,9 +22,6 @@ const Home = () => {
   const { authState, oktaAuth } = useOktaAuth();
   const [userInfo, setUserInfo] = useState(null);
 
-  /* For File Upload & Download @Peter */
-  const [files, setFiles] = useState([]);
-
   useEffect(() => {
     if (!authState || !authState.isAuthenticated) {
       // When user isn't authenticated, forget any user info
@@ -60,21 +57,63 @@ const Home = () => {
   }
 
   return (
-    <>
-      {/* HTML For File Upload & Download @Peter */}
-      <h1>Upload and Download Files</h1>
+    <div>
+      <div>
+        <Header as="h1">PKCE Flow w/ Okta Hosted Login Page</Header>
 
-      {/* The Upload Component */}
-      <Upload setFiles={setFiles} />
+        {authState.isAuthenticated && !userInfo && (
+          <div>Loading user information...</div>
+        )}
 
-      {/* The List of Uploaded Files */}
-      {files.length > 0 && (
-        <>
-          <h2>Uploaded Files:</h2>
-          <FileList files={files} />
-        </>
-      )}
-    </>
+        {authState.isAuthenticated && userInfo && (
+          <>
+            {/* HTML For File Upload & Download @Peter */}
+            <h1>Upload and Download Files</h1>
+
+            {/* The Upload Component */}
+            <Upload setFiles={setFiles} />
+
+            {/* The List of Uploaded Files */}
+            {files.length > 0 && (
+              <>
+                <h2>Uploaded Files:</h2>
+                <FileList files={files} />
+              </>
+            )}
+          </>
+        )}
+
+        {!authState.isAuthenticated && (
+          <div>
+            <p>
+              If you&lsquo;re viewing this page then you have successfully
+              started this React application.
+            </p>
+            <p>
+              <span>This example shows you how to use the </span>
+              <a href="https://github.com/okta/okta-oidc-js/tree/master/packages/okta-react">
+                Okta React Library
+              </a>
+              <span> to add the </span>
+              <a href="https://developer.okta.com/docs/guides/implement-auth-code-pkce">
+                PKCE Flow
+              </a>
+              <span> to your application.</span>
+            </p>
+            <p>
+              When you click the login button below, you will be redirected to
+              the login page on your Okta org. After you authenticate, you will
+              be returned to this application with an ID token and access token.
+              These tokens will be stored in local storage and can be retrieved
+              at a later time.
+            </p>
+            <Button id="login-button" primary onClick={login}>
+              Login
+            </Button>
+          </div>
+        )}
+      </div>
+    </div>
   );
 };
 export default Home;
