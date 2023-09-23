@@ -5,6 +5,7 @@ import { Header, Icon, Table } from "semantic-ui-react";
 /* For Readt File Upload & Download @Peter */
 import Upload from "./Upload";
 import FileList from "./FileList";
+import "../styles/Main.css";
 
 const Main = () => {
   const { authState, oktaAuth } = useOktaAuth();
@@ -34,19 +35,35 @@ const Main = () => {
 
   return (
     <>
-      {/* HTML For File Upload & Download @Peter */}
-      <h1>Upload and Download Files</h1>
+      <div className="components">
+        <div className="centerFlexCol">
+          {/* HTML For File Upload & Download @Peter */}
+          <h1>Upload and Download Files</h1>
 
-      {/* The Upload Component */}
-      <Upload setFiles={setFiles} />
+          {/* The Upload Component */}
+          <Upload setFiles={setFiles} />
 
-      {/* The List of Uploaded Files */}
-      {files.length > 0 && (
-        <>
-          <h2>Uploaded Files:</h2>
-          <FileList files={files} />
-        </>
-      )}
+          {/* The List of Uploaded Files */}
+          {files.length > 0 && (
+            <>
+              <h2>Uploaded Files:</h2>
+              <FileList files={files} />
+            </>
+          )}
+
+          <a>
+            <div className="btn btn_secondary">
+              <p>START</p>
+            </div>
+          </a>
+          <br></br>
+          <a>
+            <div className="btn btn_primary">
+              <p>DOWNLOAD</p>
+            </div>
+          </a>
+        </div>
+      </div>
     </>
   );
 };

@@ -20,6 +20,16 @@ const Home = () => {
   const { authState, oktaAuth } = useOktaAuth();
   const [userInfo, setUserInfo] = useState(null);
 
+  const logout = async () => {
+    oktaAuth.signOut();
+  };
+
+  const handleSwitchChange = (event) => {
+    if (authState.isAuthenticated && !event.target.checked) {
+      logout();
+    }
+  };
+
   useEffect(() => {
     if (!authState || !authState.isAuthenticated) {
       // When user isn't authenticated, forget any user info
@@ -42,7 +52,7 @@ const Home = () => {
   return (
     <div className="components">
       <div className="centerFlexCol">
-        <Header as="h1">PKCE Flow w/ Okta Hosted Login Page</Header>
+        <h1>PKCE Flow w/ Okta Hosted Login Page</h1>
 
         {authState.isAuthenticated && !userInfo && (
           <div>Loading user information...</div>
@@ -55,7 +65,7 @@ const Home = () => {
               {userInfo.name}!
             </p>
             <a href="/main">
-              <div className="btn btn_primary">
+              <div className="btn btn_secondary">
                 <p>GO!</p>
               </div>
             </a>
@@ -64,11 +74,27 @@ const Home = () => {
 
         {!authState.isAuthenticated && (
           <div>
-            <Button id="login-button" primary onClick={login}>
-              Login
-            </Button>
+            <a onClick={login}>
+              <div className="btn btn_secondary">
+                <p>LOGIN</p>
+              </div>
+            </a>
           </div>
         )}
+        <div class="switch">
+          <div class="switch_1">
+            <input
+              id="switch-1"
+              type="checkbox"
+              checked={authState.isAuthenticated}
+              onChange={handleSwitchChange}
+            />
+            <label for="switch-1"></label>
+          </div>
+        </div>
+
+        {/* Text field */}
+        {authState.isAuthenticated ? <p>LOGGED IN</p> : <p>LOGGED OUT</p>}
       </div>
     </div>
   );

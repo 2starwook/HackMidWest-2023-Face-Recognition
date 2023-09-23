@@ -9,9 +9,24 @@
  *
  * See the License for the specific language governing permissions and limitations under the License.
  */
+:root {
+  --primary-light: #8abdff;
+  --primary: #6d5dfc;
+  --primary-dark: #5b0eeb;
+  --white: #ffffff;
+  --greyLight-1: #e4ebf5;
+  --greyLight-2: #c8d0e7;
+  --greyLight-3: #bec8e4;
+  --greyDark: #9baacf;
+}
+
+html {
+  background: var(--greyLight-1);
+}
 
 body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  background: var(--greyLight-1);
 }
