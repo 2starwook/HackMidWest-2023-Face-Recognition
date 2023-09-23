@@ -10,10 +10,10 @@
  * See the License for the specific language governing permissions and limitations under the License.
  */
 
-import { useOktaAuth } from '@okta/okta-react';
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { Container, Icon, Image, Menu } from 'semantic-ui-react';
+import { useOktaAuth } from "@okta/okta-react";
+import React from "react";
+import { Link } from "react-router-dom";
+import { Container, Icon, Image, Menu } from "semantic-ui-react";
 
 const Navbar = () => {
   const { authState, oktaAuth } = useOktaAuth();
@@ -35,10 +35,10 @@ const Navbar = () => {
             <Link to="/">Okta-React Sample Project</Link>
           </Menu.Item>
           {authState.isAuthenticated && (
-          <Menu.Item id="messages-button">
-            <Icon name="mail outline" />
-            <Link to="/messages">Messages</Link>
-          </Menu.Item>
+            <Menu.Item id="messages-button">
+              <Icon name="mail outline" />
+              <Link to="/messages">Messages</Link>
+            </Menu.Item>
           )}
           {authState.isAuthenticated && (
             <Menu.Item id="profile-button">
@@ -46,7 +46,9 @@ const Navbar = () => {
             </Menu.Item>
           )}
           {authState.isAuthenticated && (
-            <Menu.Item id="logout-button" onClick={logout}>Logout</Menu.Item>
+            <Menu.Item id="logout-button" onClick={logout}>
+              Logout
+            </Menu.Item>
           )}
           {!authState && !authState.isAuthenticated && (
             <Menu.Item onClick={login}>Login</Menu.Item>
