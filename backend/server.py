@@ -12,7 +12,6 @@ def hello_world():
       "Age":"22",
       "programming":"python"
       })
-  # response.headers.add('Access-Control-Allow-Origin', '*')
   return response
 
 if __name__ == '__main__':

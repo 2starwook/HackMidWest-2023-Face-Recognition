@@ -13,39 +13,37 @@
 import { useOktaAuth } from '@okta/okta-react';
 import React, { useState, useEffect } from 'react';
 
-import config from '../config';
 
 const Bridge = () => {
-  const { authState, oktaAuth } = useOktaAuth();
+  const { authState } = useOktaAuth();
   const [data, setdata] = useState({
     name: "",
     age: 0,
     date: "",
     programming: "",
   });
+  const fetchData = () => {
+    fetch("http://127.0.0.1:5000/data", {'mode': 'cors', 'methods': 'GET'})
+      .then(response => {
+        return response.json()
+      })
+      .then(data => {
+        setdata({
+          name: data.Name,
+          age: data.Age,
+          programming: data.programming,
+        })
+      })
+      .catch(error => console.log(error))
+  }
   // fetch messages
   useEffect(() => {
     // Using fetch to fetch the api from
     // flask server it will be redirected to proxy
     if (authState && authState.isAuthenticated) {
-      fetch('http://127.0.0.1:5000/data',{
-        'mode': 'cors',
-        'methods':'GET',
-        headers : {
-          'Content-Type':'application/json'
-        }
-      })
-      .then(response => response.json())
-      .then(data => 
-          setdata({
-            name: data.Name,
-            age: data.Age,
-            programming: data.programming,
-        })
-        )
-      .catch(error => console.log(error))
+      fetchData()
     };
-}, []);
+  }, []);
 
     return (
         <div className="App">
