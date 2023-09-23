@@ -18,18 +18,20 @@ import Home from '../pages/Home';
 import Loading from './Loading';
 import Messages from '../pages/Messages';
 import Profile from '../pages/Profile';
-import Bridge from '../pages/Bridge';
 
 const AppRoutes = () => {
   return (
     <Routes>
-      <Route path="/" exact={true} element={<Home/>}/>
-      <Route path="login/callback" element={<LoginCallback loadingElement={<Loading/>}/>}/>
-      <Route path="/messages" element={<RequiredAuth/>}>
-        <Route path="" element={<Messages/>}/>
+      <Route path="/" exact={true} element={<Home />} />
+      <Route
+        path="login/callback"
+        element={<LoginCallback loadingElement={<Loading />} />}
+      />
+      <Route path="/messages" element={<RequiredAuth />}>
+        <Route path="" element={<Messages />} />
       </Route>
-      <Route path="/bridge" element={<RequiredAuth/>}>
-        <Route path="" element={<Bridge/>}/>
+      <Route path="/profile" element={<RequiredAuth />}>
+        <Route path="" element={<Profile />} />
       </Route>
       <Route path="/profile" element={<RequiredAuth/>}>
         <Route path="" element={<Profile/>}/>
