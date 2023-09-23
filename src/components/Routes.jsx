@@ -19,6 +19,7 @@ import Loading from "./Loading";
 import Messages from "../pages/Messages";
 import Profile from "../pages/Profile";
 import Main from "../pages/Main";
+import Bridge from "../pages/Bridge"
 
 const AppRoutes = () => {
   return (
@@ -36,6 +37,9 @@ const AppRoutes = () => {
       </Route>
       <Route path="/main" element={<RequiredAuth />}>
         <Route path="" element={<Main />} />
+      </Route>
+      <Route path="/bridge" element={<RequiredAuth />}>
+        <Route path="" element={<Bridge />} />
       </Route>
     </Routes>
   );
