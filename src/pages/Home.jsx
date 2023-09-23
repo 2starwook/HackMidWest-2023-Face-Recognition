@@ -11,12 +11,8 @@
  */
 
 import { useOktaAuth } from "@okta/okta-react";
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect } from "react";
 import { Button, Header } from "semantic-ui-react";
-
-/* For Readt File Upload & Download @Peter */
-import Upload from "./Upload";
-import FileList from "./FileList";
 
 const Home = () => {
   const { authState, oktaAuth } = useOktaAuth();
@@ -66,21 +62,42 @@ const Home = () => {
         )}
 
         {authState.isAuthenticated && userInfo && (
-          <>
-            {/* HTML For File Upload & Download @Peter */}
-            <h1>Upload and Download Files</h1>
-
-            {/* The Upload Component */}
-            <Upload setFiles={setFiles} />
-
-            {/* The List of Uploaded Files */}
-            {files.length > 0 && (
-              <>
-                <h2>Uploaded Files:</h2>
-                <FileList files={files} />
-              </>
-            )}
-          </>
+          <div>
+            <p>
+              Welcome back,&nbsp;
+              {userInfo.name}!
+            </p>
+            <p>
+              You have successfully authenticated against your Okta org, and
+              have been redirected back to this application. You now have an ID
+              token and access token in local storage. Visit the{" "}
+              <a href="/profile">My Profile</a> page to take a look inside the
+              ID token.
+            </p>
+            <h3>Next Steps</h3>
+            <p>
+              Currently this application is a stand-alone front end application.
+              At this point you can use the access token to authenticate
+              yourself against resource servers that you control.
+            </p>
+            <p>
+              This sample is designed to work with one of our resource server
+              examples. To see access token authentication in action, please
+              download one of these resource server examples:
+            </p>
+            <ul>
+              {resourceServerExamples.map((example) => (
+                <li key={example.url}>
+                  <a href={example.url}>{example.label}</a>
+                </li>
+              ))}
+            </ul>
+            <p>
+              Once you have downloaded and started the example resource server,
+              you can visit the <a href="/messages">My Messages</a> page to see
+              the authentication process in action.
+            </p>
+          </div>
         )}
 
         {!authState.isAuthenticated && (
