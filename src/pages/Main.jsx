@@ -19,6 +19,10 @@ const Main = () => {
   const { authState, oktaAuth } = useOktaAuth();
   const [userInfo, setUserInfo] = useState(null);
   const [files, setFiles] = useState([]);
+  const [data, setData] = useState({
+    path: "",
+    numOfPerson: 0,
+  });
 
   /* Check if analyze is done */
   const [doneAnalyzing, setDoneAnalyzing] = useState(false);
@@ -46,6 +50,18 @@ const Main = () => {
         this.setState({ imageURL: `http://localhost:5000/${body.file}` });
       });
     });
+    fetch("http://127.0.0.1:5000/process", {
+      method: "GET",
+      mode: "cors",
+      body: data,
+    }).then((response) => {
+      return response.json()})
+        .then((data) => {
+          setData({
+            path: data.path,
+            numOfPerson: data.n,
+          });
+        });
     setDoneAnalyzing(true);
   };
 
