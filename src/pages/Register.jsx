@@ -20,6 +20,21 @@ const Register = () => {
   return (
     <>
       <div className="container">
+        <div className="componentsOptions">
+          <div class="icon">
+            <Link to="/">
+              <div class="icon__home">
+                <IonIcon icon={homeIcon} />
+              </div>
+            </Link>
+            <div class="icon__account">
+              <IonIcon icon={personIcon} />
+            </div>
+            <div class="icon__settings">
+              <IonIcon icon={settingsIcon} />
+            </div>
+          </div>
+        </div>
         <div className="components">
           <div className="rightFlex"></div>
           <div className="centerFlexCol">
@@ -57,20 +72,6 @@ const Register = () => {
                 <p>Submit</p>
               </div>
             </a>
-            <br />
-            <div class="icon">
-              <Link to="/">
-                <div class="icon__home">
-                  <IonIcon icon={homeIcon} />
-                </div>
-              </Link>
-              <div class="icon__account">
-                <IonIcon icon={personIcon} />
-              </div>
-              <div class="icon__settings">
-                <IonIcon icon={settingsIcon} />
-              </div>
-            </div>
           </div>
         </div>
       </div>
