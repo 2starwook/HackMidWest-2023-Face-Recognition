@@ -5,7 +5,7 @@ import {
   person as personIcon,
   settings as settingsIcon,
 } from "ionicons/icons";
-import { Link, Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import "../styles/Register.css";
 
