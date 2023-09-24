@@ -11,3 +11,5 @@ This project involves with the face recognition using YOLOv8, React frontend wit
 3. Run the app
     npm run
 
+# Contributor
+Seonguk Lee, Peter Lee, Jinwoo Park
