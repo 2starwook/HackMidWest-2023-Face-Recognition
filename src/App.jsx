@@ -15,7 +15,6 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { OktaAuth, toRelativeUrl } from "@okta/okta-auth-js";
 import { Security } from "@okta/okta-react";
-import { Container } from "semantic-ui-react";
 import config from "./config";
 import Navbar from "./Navbar";
 import Routes from "./components/Routes";

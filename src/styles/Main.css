@@ -17,11 +17,11 @@
 }
 
 body {
-  font-family: "Poppins", sans-serif;
+  font-family: "JetBrains Mono", sans-serif;
 }
 
 h1 {
-  font-family: "Poppins", sans-serif;
+  font-family: "JetBrains Mono", sans-serif;
   color: var(--primary);
 }
 
@@ -30,13 +30,13 @@ h1 {
   display: -webkit-box;
   display: flex;
   align-items: center;
-  font-family: "Poppins", sans-serif;
+  font-family: "JetBrains Mono", sans-serif;
   background: var(--greyLight-1);
 }
 
 .components {
   width: 70vh;
-  font-family: "Poppins", sans-serif;
+  font-family: "JetBrains Mono", sans-serif;
   color: var(--greyDark);
   background: var(--greyLight-1);
   border-radius: 3rem;
@@ -52,7 +52,7 @@ h1 {
 
 .componentsOptions {
   width: 13vh;
-  font-family: "Poppins", sans-serif;
+  font-family: "JetBrains Mono", sans-serif;
   background: var(--greyLight-1);
   border-radius: 3rem;
   box-shadow: 0.8rem 0.8rem 1.4rem var(--greyLight-2),
