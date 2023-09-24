@@ -5,7 +5,7 @@ import {
   person as personIcon,
   settings as settingsIcon,
 } from "ionicons/icons";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 
 import "../styles/Register.css";
 
@@ -15,6 +15,7 @@ const Register = () => {
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [mobilePhone, setMobilePhone] = useState("");
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
   const handleFirstNameChange = (event) => {
     setFirstName(event.target.value);
@@ -51,11 +52,27 @@ const Register = () => {
         this.setState({ imageURL: `http://localhost:5000/${body.file}` });
       });
     });
+    setIsSubmitted(true);
   };
 
   return (
     <>
       <div className="container">
+        <div className="componentsOptions">
+          <div class="icon">
+            <Link to="/">
+              <div class="icon__home">
+                <IonIcon icon={homeIcon} />
+              </div>
+            </Link>
+            <div class="icon__account">
+              <IonIcon icon={personIcon} />
+            </div>
+            <div class="icon__settings">
+              <IonIcon icon={settingsIcon} />
+            </div>
+          </div>
+        </div>
         <div className="components">
           <div className="rightFlex"></div>
           <div className="centerFlexCol">
@@ -105,23 +122,10 @@ const Register = () => {
                 <p>Submit</p>
               </div>
             </a>
-            <br />
-            <div class="icon">
-              <Link to="/">
-                <div class="icon__home">
-                  <IonIcon icon={homeIcon} />
-                </div>
-              </Link>
-              <div class="icon__account">
-                <IonIcon icon={personIcon} />
-              </div>
-              <div class="icon__settings">
-                <IonIcon icon={settingsIcon} />
-              </div>
-            </div>
           </div>
         </div>
       </div>
+      {isSubmitted && <Redirect to="/home" />}
     </>
   );
 };

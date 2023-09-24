@@ -76,7 +76,7 @@ const Home = () => {
         </div>
         <div className="components">
           <div className="centerFlexCol">
-            <h1>PKCE Flow w/ Okta Hosted Login Page</h1>
+            <h1>ANG GIMOTTI</h1>
             <br />
 
             {authState.isAuthenticated && !userInfo && (
