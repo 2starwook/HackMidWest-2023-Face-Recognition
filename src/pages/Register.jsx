@@ -16,20 +16,20 @@ const Register = () => {
   const [email, setEmail] = useState('');
   const [mobilePhone, setMobilePhone] = useState('');
 
-  const handleFirstNameChange = () => {
-    setFirstName(firstName);
+  const handleFirstNameChange = (event) => {
+    setFirstName(event.target.value);
   };
 
-  const handleLastNameChange = () => {
-    setLastName(lastName);
+  const handleLastNameChange = (event) => {
+    setLastName(event.target.value);
   };
 
-  const handleEmailChange = () => {
-    setEmail(email);
+  const handleEmailChange = (event) => {
+    setEmail(event.target.value);
   };
 
-  const handleMobilePhoneChange = () => {
-    setMobilePhone(mobilePhone);
+  const handleMobilePhoneChange = (event) => {
+    setMobilePhone(event.target.value);
   };
 
   const handleSubmit = (ev) => {
@@ -57,21 +57,6 @@ const Register = () => {
   return (
     <>
       <div className="container">
-        <div className="componentsOptions">
-          <div class="icon">
-            <Link to="/">
-              <div class="icon__home">
-                <IonIcon icon={homeIcon} />
-              </div>
-            </Link>
-            <div class="icon__account">
-              <IonIcon icon={personIcon} />
-            </div>
-            <div class="icon__settings">
-              <IonIcon icon={settingsIcon} />
-            </div>
-          </div>
-        </div>
         <div className="components">
           <div className="rightFlex"></div>
           <div className="centerFlexCol">
@@ -97,6 +82,20 @@ const Register = () => {
                 <p>Submit</p>
               </div>
             </a>
+            <br />
+            <div class="icon">
+              <Link to="/">
+                <div class="icon__home">
+                  <IonIcon icon={homeIcon} />
+                </div>
+              </Link>
+              <div class="icon__account">
+                <IonIcon icon={personIcon} />
+              </div>
+              <div class="icon__settings">
+                <IonIcon icon={settingsIcon} />
+              </div>
+            </div>
           </div>
         </div>
       </div>
