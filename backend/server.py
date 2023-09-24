@@ -1,10 +1,12 @@
 from flask import Flask
 from flask_cors import CORS
 
-UPLOAD_FOLDER = "./backend/uploads"
+from config import Config
 
+
+config = Config()
 app = Flask(__name__)
-app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+app.config['UPLOAD_FOLDER'] = config.PATH_UPLOAD_DIR
 cors = CORS(app, supports_credentials=True)
 app.config['CORS_HEADERS'] = 'Content-Type'
 
