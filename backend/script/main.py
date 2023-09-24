@@ -6,6 +6,7 @@ from Point import Point
 import cv2
 
 import os
+import convertapi
 
 credential_path = "../../../key/groovy-visitor-310005-2efb34d849b1.json"
 os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = credential_path
@@ -47,7 +48,8 @@ def detect_document(path):
                                         sym.p_rt = Point(x3, y3)
                                         sym.p_lt = Point(x4, y4)
                                         break
-
+                        if c < 0.3:
+                            continue
                         if not duplicate_check:
                             l_c.append(Symbol(
                             character = t,
@@ -64,20 +66,61 @@ def detect_document(path):
             "https://cloud.google.com/apis/design/errors".format(response.error.message)
         )
 
-detect_document("./image.jpg")
-img = cv2.imread('./image.jpg')
+detect_document("./my_font.jpeg")
+img = cv2.imread('./my_font.jpeg')
 
 resize_points = (resize_points_tmp[0], resize_points_tmp[1])
 
 img_resize = cv2.resize(img, resize_points, cv2.INTER_LINEAR)
 
-cropped_letters = []
-for l in l_c:
-    cropped_letters.append(img_resize[l.p_lb.y:l.p_lt.y, l.p_lt.x:l.p_rt.x])
+if not os.path.exists("./letters"):
+    os.mkdir("letters")
 
-for img in cropped_letters:
-    cv2.imshow("original", img)
-    cv2.waitKey(0)
-    cv2.destroyAllWindows()
+os.chdir("./letters")
+
+for l in l_c:
+    cropped_letter = img_resize[l.p_lb.y:l.p_lt.y, l.p_lt.x:l.p_rt.x]
+    if l.character.isupper():
+        l.character += "_up"
+    if l.character == ".":
+        l.character = "dot"
+    cv2.imwrite(l.character + ".jpg", cropped_letter)
+
+os.chdir("../")
+# for img in cropped_letters:
+#     cv2.imshow("original", img)
+#     cv2.waitKey(0)
+#     cv2.destroyAllWindows()
+
+convertapi.api_secret = 'RpGgeEKNY48h6xFz'
+def convert_all_pngs_to_svgs(input_folder, output_folder):
+    # Ensure the output folder exists
+    if not os.path.exists(output_folder):
+        os.makedirs(output_folder)
+
+    # Iterate through all files in the input folder
+    for filename in os.listdir(input_folder):
+        # Check if the file is a PNG file
+        if filename.endswith(".jpg"):
+            # Build full path of input PNG file
+            png_path = os.path.join(input_folder, filename)
+
+            # Build full path of output SVG file
+            svg_filename = os.path.splitext(filename)[0] + '.svg'
+            svg_path = os.path.join(output_folder, svg_filename)
+            
+            # Convert PNG to SVG using convertapi
+            convertapi.convert('svg', {
+                'File': png_path
+            }, from_format = 'jpg').save_files(svg_path)
+            
+            print(f'Converted {filename} to SVG.')
+
+# Paths of input and output folders
+input_folder = 'letters'
+output_folder = 'svg_output'
+
+# Convert all PNGs to SVGs
+convert_all_pngs_to_svgs(input_folder, output_folder)
 
 a = 1
