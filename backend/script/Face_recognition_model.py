@@ -3,7 +3,7 @@ import pandas as pd
 import cv2
 from copy import deepcopy
 
-from backend.config import Config
+from config import Config
 
 config = Config()
 

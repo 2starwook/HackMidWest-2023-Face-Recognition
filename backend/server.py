@@ -1,8 +1,8 @@
 from flask import Flask
 from flask_cors import CORS
 
-from backend.config import Config
-from backend.script.Face_recognition_model import Face_recognition_model
+from config import Config
+from script.Face_recognition_model import Face_recognition_model
 
 
 config = Config()
@@ -12,8 +12,8 @@ app.config['UPLOAD_FOLDER'] = config.PATH_UPLOAD_DIR
 cors = CORS(app, supports_credentials=True)
 app.config['CORS_HEADERS'] = 'Content-Type'
 
-from backend.get_api import *
-from backend.post_api import *
+from get_api import *
+from post_api import *
 
 
 if __name__ == '__main__':

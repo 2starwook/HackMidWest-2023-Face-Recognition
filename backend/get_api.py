@@ -1,6 +1,6 @@
 from flask import jsonify
 
-from backend.server import app, config, face_recognition_model
+from server import app, config, face_recognition_model
 
 
 @app.route('/process', methods=["GET"])

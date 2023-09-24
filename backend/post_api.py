@@ -4,8 +4,8 @@ from flask import session, request
 from werkzeug.utils import secure_filename
 from flask_cors import cross_origin
 
-import backend.okta_api as okta
-from backend.server import app, config
+import okta_api as okta
+from server import app, config
 
 
 @app.route('/upload', methods=['POST'])

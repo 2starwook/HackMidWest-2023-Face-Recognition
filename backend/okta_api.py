@@ -1,7 +1,7 @@
 import requests
 import json
 
-from backend.server import config
+from server import config
 
 
 def create_user(first_name, last_name, email, mobile_phone):
