@@ -182,6 +182,7 @@ h1 {
   background: none;
   font-family: inherit;
   color: var(--greyDark);
+  transition: box-shadow 1s ease-in-out;
 }
 .form__input::-webkit-input-placeholder {
   color: var(--greyLight-3);

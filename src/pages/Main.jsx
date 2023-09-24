@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useOktaAuth } from "@okta/okta-react";
-import { Header, Icon, Table } from "semantic-ui-react";
 import { IonIcon } from "@ionic/react";
 import { hourglass as pauseIcon, play as playIcon } from "ionicons/icons";
 import {
@@ -112,6 +111,7 @@ const Main = () => {
                 className={`circle__back-2 ${isPlaying ? "" : "paused"}`}
               ></span>
             </div>
+            <br />
             <div class="icon">
               <Link to="/">
                 <div class="icon__home">
