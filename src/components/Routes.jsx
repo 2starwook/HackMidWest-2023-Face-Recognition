@@ -18,6 +18,7 @@ import Home from "../pages/Home";
 import Loading from "./Loading";
 import Main from "../pages/Main";
 import Register from "../pages/Register";
+import PWReset from "../pages/PWReset";
 
 const AppRoutes = () => {
   return (
@@ -31,6 +32,7 @@ const AppRoutes = () => {
         <Route path="" element={<Main />} />
       </Route>
       <Route path="/register" element={<Register />} />
+      <Route path="/pwreset" element={<PWReset />} />
     </Routes>
   );
 };

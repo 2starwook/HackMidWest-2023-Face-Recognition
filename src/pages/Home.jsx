@@ -111,6 +111,12 @@ const Home = () => {
                     <p>Register</p>
                   </div>
                 </Link>
+                <br />
+                <Link to="/pwreset">
+                  <div className="btn btn_secondary">
+                    <p>Find Password</p>
+                  </div>
+                </Link>
               </div>
             )}
             <br />
