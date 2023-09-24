@@ -27,6 +27,24 @@ const Main = () => {
     setIsPlaying(!isPlaying);
   };
 
+  const handleUploadImage = (ev) => {
+    ev.preventDefault();
+    const data = new FormData();
+    data.append('file', files[0]);
+    fetch('http://127.0.0.1:5000/upload', {
+      method: 'POST',
+      mode: 'no-cors',
+      body: data,
+      headers: {
+        'Access-Control-Allow-Origin': '*'
+      }
+    }).then((response) => {
+      response.json().then((body) => {
+        this.setState({ imageURL: `http://localhost:5000/${body.file}` });
+      });
+    });
+  }
+
   useEffect(() => {
     if (!authState || !authState.isAuthenticated) {
       // When user isn't authenticated, forget any user info
@@ -90,7 +108,7 @@ const Main = () => {
               </>
             )}
 
-            <a>
+            <a onClick={handleUploadImage}>
               <div className="btn btn_secondary">
                 <p>Start</p>
               </div>

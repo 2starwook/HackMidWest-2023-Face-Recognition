@@ -17,7 +17,6 @@ import { RequiredAuth } from "./SecureRoute";
 import Home from "../pages/Home";
 import Loading from "./Loading";
 import Main from "../pages/Main";
-import Uploads from "../pages/Uploads";
 import Register from "../pages/Register";
 
 const AppRoutes = () => {
@@ -32,9 +31,6 @@ const AppRoutes = () => {
         <Route path="" element={<Main />} />
       </Route>
       <Route path="/register" element={<Register />} />
-      <Route path="/uploads" element={<RequiredAuth />}>
-        <Route path="" element={<Uploads />} />
-      </Route>
     </Routes>
   );
 };
