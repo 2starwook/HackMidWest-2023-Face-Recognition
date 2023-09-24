@@ -18,6 +18,7 @@ import Home from "../pages/Home";
 import Loading from "./Loading";
 import Main from "../pages/Main";
 import Register from "../pages/Register";
+import Uploads from "../pages/Uploads";
 
 const AppRoutes = () => {
   return (
@@ -31,6 +32,9 @@ const AppRoutes = () => {
         <Route path="" element={<Main />} />
       </Route>
       <Route path="/register" element={<Register />} />
+      <Route path="/uploads" element={<RequiredAuth />}>
+        <Route path="" element={<Uploads />} />
+      </Route>
     </Routes>
   );
 };

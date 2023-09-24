@@ -1,18 +1,17 @@
-from flask import Flask, jsonify
+from flask import Flask
 from flask_cors import CORS
 
+UPLOAD_FOLDER = "./uploads"
 
 app = Flask(__name__)
-cors = CORS(app)
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+cors = CORS(app, supports_credentials=True)
+app.config['CORS_HEADERS'] = 'Content-Type'
 
-@app.route('/data', methods=["GET"])
-def hello_world():
-  response = jsonify({
-      'Name':"geek",
-      "Age":"22",
-      "programming":"python"
-      })
-  return response
+
+from get import *
+from post import *
+
 
 if __name__ == '__main__':
     app.run(port=5000, debug=True)
