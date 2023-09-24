@@ -20,6 +20,7 @@ import Messages from "../pages/Messages";
 import Profile from "../pages/Profile";
 import Main from "../pages/Main";
 import Bridge from "../pages/Bridge"
+import Uploads from "../pages/Uploads"
 
 const AppRoutes = () => {
   return (
@@ -40,6 +41,9 @@ const AppRoutes = () => {
       </Route>
       <Route path="/bridge" element={<RequiredAuth />}>
         <Route path="" element={<Bridge />} />
+      </Route>
+      <Route path="/uploads" element={<RequiredAuth />}>
+        <Route path="" element={<Uploads />} />
       </Route>
     </Routes>
   );

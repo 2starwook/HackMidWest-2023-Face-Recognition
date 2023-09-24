@@ -5,7 +5,8 @@ UPLOAD_FOLDER = "./uploads"
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-cors = CORS(app)
+cors = CORS(app, supports_credentials=True)
+app.config['CORS_HEADERS'] = 'Content-Type'
 
 
 from get import *
