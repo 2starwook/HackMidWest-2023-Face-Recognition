@@ -117,7 +117,13 @@ const Main = () => {
           }}
         >
           <div className="resultBox">
-            {data.path && <img src={data.path} alt="Analyzed result" />}
+            {data.path && (
+              <img
+                src={data.path}
+                alt="Analyzed result"
+                style={{ width: "100%", objectFit: "contain" }}
+              />
+            )}
             <h2>Analysis complete!</h2>
             <br></br>
             <div className="resultBoxOptions">
