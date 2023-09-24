@@ -117,9 +117,9 @@ const Main = () => {
           }}
         >
           <div className="resultBox">
+            {data.path && <img src={data.path} alt="Analyzed result" />}
             <h2>Analysis complete!</h2>
             <br></br>
-
             <div className="resultBoxOptions">
               <a onClick={() => setDoneAnalyzing(false)}>
                 <div class="resultClose">
