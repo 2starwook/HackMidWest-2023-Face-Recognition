@@ -11,11 +11,48 @@ import "../styles/Register.css";
 
 const Register = () => {
   /* For Start Button */
-  const [isPlaying, setIsPlaying] = useState(false);
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [email, setEmail] = useState('');
+  const [mobilePhone, setMobilePhone] = useState('');
 
-  const togglePlayPause = () => {
-    setIsPlaying(!isPlaying);
+  const handleFirstNameChange = () => {
+    setFirstName(firstName);
   };
+
+  const handleLastNameChange = () => {
+    setLastName(lastName);
+  };
+
+  const handleEmailChange = () => {
+    setEmail(email);
+  };
+
+  const handleMobilePhoneChange = () => {
+    setMobilePhone(mobilePhone);
+  };
+
+  const handleSubmit = (ev) => {
+    ev.preventDefault();
+    const data = new FormData();
+    data.append('firstName', firstName);
+    data.append('lastName', lastName);
+    data.append('email', email);
+    data.append('mobilePhone', mobilePhone);
+    fetch('http://127.0.0.1:5000/createuser', {
+      method: 'POST',
+      mode: 'no-cors',
+      body: data,
+      headers: {
+        'Access-Control-Allow-Origin': '*'
+      }
+    }).then((response) => {
+      response.json().then((body) => {
+        this.setState({ imageURL: `http://localhost:5000/${body.file}` });
+      });
+    });
+  }
+
 
   return (
     <>
@@ -25,34 +62,22 @@ const Register = () => {
           <div className="centerFlexCol">
             <h1>Welcome!</h1>
             <div class="form">
-              <input type="text" class="form__input" placeholder="First Name" />
+              <input type="text" value={firstName} onChange={handleFirstNameChange} class="form__input" placeholder="First Name" />
             </div>
             <br />
             <div class="form">
-              <input type="text" class="form__input" placeholder="Last Name" />
+              <input type="text" value={lastName} onChange={handleLastNameChange} class="form__input" placeholder="Last Name" />
             </div>
             <br />
             <div class="form">
-              <input type="text" class="form__input" placeholder="Email" />
+              <input type="text" value={email} onChange={handleEmailChange} class="form__input" placeholder="Email" />
             </div>
             <br />
             <div class="form">
-              <input
-                type="password"
-                class="form__input"
-                placeholder="Password"
-              />
+              <input type="text" value={mobilePhone} onChange={handleMobilePhoneChange} class="form__input" placeholder="Mobile Phone" />
             </div>
             <br />
-            <div class="form">
-              <input
-                type="password"
-                class="form__input"
-                placeholder="Confirm"
-              />
-            </div>
-            <br />
-            <a>
+            <a onClick={handleSubmit}>
               <div className="btn btn_secondary">
                 <p>Submit</p>
               </div>

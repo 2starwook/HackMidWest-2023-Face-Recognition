@@ -22,9 +22,9 @@ def upload_file():
 @app.route('/createuser', methods=['POST'])
 @cross_origin()
 def create_user():
-    firstname = request.files['firstname']
-    lastname = request.files['lastname']
-    email = request.files['email']
-    mobilephone = request.files['mobilephone']
+    firstname = request.form['firstName']
+    lastname = request.form['lastName']
+    email = request.form['email']
+    mobilephone = request.form['mobilePhone']
     is_created = okta.create_user(firstname, lastname, email, mobilephone)
     return '200 OK'
