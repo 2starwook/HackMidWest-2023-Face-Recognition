@@ -15,7 +15,7 @@ def upload():
         os.mkdir(config.PATH_UPLOAD_DIR)
     file = request.files['file'] 
     filename = secure_filename(file.filename)
-    destination=sep.join([config.PATH_UPLOAD_DIR, filename])
+    destination=sep.join([config.PATH_UPLOAD_DIR, config.IMAGE_FILE])
     file.save(destination)
     session['uploadFilePath']=destination
     return '200 OK'
