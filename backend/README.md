@@ -6,3 +6,5 @@
 # How to run server
 
     flask --app server run
+    or
+    python3 server.py
