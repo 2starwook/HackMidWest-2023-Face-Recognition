@@ -19,7 +19,7 @@ const Main = () => {
   const { authState, oktaAuth } = useOktaAuth();
   const [userInfo, setUserInfo] = useState(null);
   const [files, setFiles] = useState([]);
-  const [data, setData] = useState({
+  const [resData, setResData] = useState({
     path: "",
     numOfPerson: 0,
   });
@@ -53,15 +53,14 @@ const Main = () => {
     fetch("http://127.0.0.1:5000/process", {
       method: "GET",
       mode: "cors",
-      body: data,
     })
       .then((response) => {
         return response.json();
       })
-      .then((data) => {
-        setData({
-          path: data.path,
-          numOfPerson: data.n,
+      .then((res) => {
+        setResData({
+          path: res.path,
+          numOfPerson: res.n,
         });
       });
     setDoneAnalyzing(true);
@@ -117,7 +116,7 @@ const Main = () => {
           }}
         >
           <div className="resultBox">
-            {data.path && <img src={data.path} alt="Analyzed result" />}
+            {resData.path && <img src={resData.path} alt="Analyzed result" />}
             <h2>Analysis complete!</h2>
             <br></br>
             <div className="resultBoxOptions">
@@ -186,8 +185,8 @@ const Main = () => {
                 <p>Download</p>
               </div>
             </a>
-            <p>{data.path}</p>
-            <p>{data.numOfPerson}</p>
+            <p>{resData.path}</p>
+            <p>{resData.numOfPerson}</p>
             <div className="circle">
               <span className="circle__btn" onClick={togglePlayPause}>
                 <IonIcon icon={isPlaying ? pauseIcon : playIcon} />
