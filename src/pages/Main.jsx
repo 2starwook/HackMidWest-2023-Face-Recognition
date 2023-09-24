@@ -54,14 +54,16 @@ const Main = () => {
       method: "GET",
       mode: "cors",
       body: data,
-    }).then((response) => {
-      return response.json()})
-        .then((data) => {
-          setData({
-            path: data.path,
-            numOfPerson: data.n,
-          });
+    })
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        setData({
+          path: data.path,
+          numOfPerson: data.n,
         });
+      });
     setDoneAnalyzing(true);
   };
 
@@ -115,12 +117,15 @@ const Main = () => {
           }}
         >
           <div className="resultBox">
+            {data.path && <img src={data.path} alt="Analyzed result" />}
             <h2>Analysis complete!</h2>
             <br></br>
             <div className="resultBoxOptions">
-              <div class="resultClose">
-                <IonIcon icon={closeIcon} />
-              </div>
+              <a onClick={() => setDoneAnalyzing(false)}>
+                <div class="resultClose">
+                  <IonIcon icon={closeIcon} />
+                </div>
+              </a>
             </div>
           </div>
         </div>

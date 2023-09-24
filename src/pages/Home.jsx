@@ -16,7 +16,12 @@ import { Link } from "react-router-dom";
 import { default as myLogo } from "../img/logo.svg";
 import { default as oktaLogo } from "../img/okta_logo.svg";
 import { IonIcon } from "@ionic/react";
-import { help, helpOutline as helpIcon } from "ionicons/icons";
+import {
+  help,
+  logoGithub as helpIcon,
+  logoReact as reactIcon,
+  gitNetwork as networkIcon,
+} from "ionicons/icons";
 
 import "../styles/Home.css";
 import "../Globals.css";
@@ -69,12 +74,24 @@ const Home = () => {
                 <img src={myLogo} className="my-logo" />
               </div>
             </Link>
-            <div class="logos__account">
-              <img src={oktaLogo} className="okta-logo" />
-            </div>
-            <a onClick={() => setDarkMode((prev) => !prev)}>
+            <a href="https://www.okta.com/">
+              <div class="logos__account">
+                <img src={oktaLogo} className="okta-logo" />
+              </div>
+            </a>
+            <a href="https://github.com/2starwook/HackMidWest">
               <div class="logos__settings">
                 <IonIcon icon={helpIcon} />
+              </div>
+            </a>
+            <a href="https://react.dev/">
+              <div class="logos__settings">
+                <IonIcon icon={reactIcon} />
+              </div>
+            </a>
+            <a href="https://github.com/ultralytics/ultralytics">
+              <div class="logos__settings">
+                <IonIcon icon={networkIcon} />
               </div>
             </a>
           </div>

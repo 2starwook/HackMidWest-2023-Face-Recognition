@@ -67,6 +67,7 @@ h1 {
   grid-template-rows: repeat(autofit, min-content);
   grid-column-gap: 5rem;
   grid-row-gap: 2.5rem;
+  transition: all 0.5s ease; /* This will apply the transition */
 }
 
 .componentsSide {
@@ -83,7 +84,7 @@ h1 {
   grid-column-gap: 5rem;
   grid-row-gap: 2.5rem;
   margin-right: 2.2rem;
-  height: 30vh;
+  height: 45vh;
 }
 
 .centerFlexCol {
