@@ -1,16 +1,31 @@
 import React, { useState, useEffect } from "react";
 import { useOktaAuth } from "@okta/okta-react";
 import { Header, Icon, Table } from "semantic-ui-react";
+import { IonIcon } from "@ionic/react";
+import { hourglass as pauseIcon, play as playIcon } from "ionicons/icons";
+import {
+  home as homeIcon,
+  person as personIcon,
+  settings as settingsIcon,
+} from "ionicons/icons";
+import { Link } from "react-router-dom";
 
-/* For Readt File Upload & Download @Peter */
-import Upload from "./Upload";
-import FileList from "./FileList";
+/* For React File Upload & Download @Peter */
+import Upload from "../components/Upload";
+import FileList from "../components/FileList";
 import "../styles/Main.css";
 
 const Main = () => {
   const { authState, oktaAuth } = useOktaAuth();
   const [userInfo, setUserInfo] = useState(null);
   const [files, setFiles] = useState([]);
+
+  /* For Start Button */
+  const [isPlaying, setIsPlaying] = useState(false);
+
+  const togglePlayPause = () => {
+    setIsPlaying(!isPlaying);
+  };
 
   useEffect(() => {
     if (!authState || !authState.isAuthenticated) {
@@ -25,6 +40,16 @@ const Main = () => {
     }
   }, [authState, oktaAuth]); // Update if authState changes
 
+  const logout = async () => {
+    oktaAuth.signOut();
+  };
+
+  const handleSwitchChange = (event) => {
+    if (authState.isAuthenticated && !event.target.checked) {
+      logout();
+    }
+  };
+
   if (!userInfo) {
     return (
       <div>
@@ -35,33 +60,72 @@ const Main = () => {
 
   return (
     <>
-      <div className="components">
-        <div className="centerFlexCol">
-          {/* HTML For File Upload & Download @Peter */}
-          <h1>Upload and Download Files</h1>
-
-          {/* The Upload Component */}
-          <Upload setFiles={setFiles} />
-
-          {/* The List of Uploaded Files */}
-          {files.length > 0 && (
-            <>
-              <h2>Uploaded Files:</h2>
-              <FileList files={files} />
-            </>
-          )}
-
-          <a>
-            <div className="btn btn_secondary">
-              <p>START</p>
+      <div className="container">
+        <div className="components">
+          <div className="rightFlex">
+            <div class="switch">
+              <div class="switch_1">
+                <input
+                  id="switch-1"
+                  type="checkbox"
+                  checked={authState.isAuthenticated}
+                  onChange={handleSwitchChange}
+                />
+                <label for="switch-1"></label>
+              </div>
             </div>
-          </a>
-          <br></br>
-          <a>
-            <div className="btn btn_primary">
-              <p>DOWNLOAD</p>
+          </div>
+          <div className="centerFlexCol">
+            {/* HTML For File Upload & Download @Peter */}
+            <h1>Upload and Download Files</h1>
+
+            {/* The Upload Component */}
+            <Upload setFiles={setFiles} />
+
+            {/* The List of Uploaded Files */}
+            {files.length > 0 && (
+              <>
+                <h2>Uploaded Files:</h2>
+                <FileList files={files} />
+              </>
+            )}
+
+            <a>
+              <div className="btn btn_secondary">
+                <p>Start</p>
+              </div>
+            </a>
+            <br></br>
+            <a>
+              <div className="btn btn_primary">
+                <p>Download</p>
+              </div>
+            </a>
+            <div className="circle">
+              <span className="circle__btn" onClick={togglePlayPause}>
+                <IonIcon icon={isPlaying ? pauseIcon : playIcon} />
+              </span>
+              <span
+                className={`circle__back-1 ${isPlaying ? "" : "paused"}`}
+              ></span>
+              <span
+                className={`circle__back-2 ${isPlaying ? "" : "paused"}`}
+              ></span>
             </div>
-          </a>
+            <div class="icon">
+              <Link to="/">
+                <div class="icon__home">
+                  <IonIcon icon={homeIcon} />
+                </div>
+              </Link>
+              <div class="icon__account">
+                <IonIcon icon={personIcon} />
+              </div>
+              <div class="icon__settings">
+                <IonIcon icon={settingsIcon} />
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </>

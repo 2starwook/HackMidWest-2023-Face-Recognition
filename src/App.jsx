@@ -20,6 +20,8 @@ import config from "./config";
 import Navbar from "./Navbar";
 import Routes from "./components/Routes";
 
+import "./Globals.css";
+
 const oktaAuth = new OktaAuth(config.oidc);
 
 const App = () => {
@@ -30,10 +32,8 @@ const App = () => {
 
   return (
     <Security oktaAuth={oktaAuth} restoreOriginalUri={restoreOriginalUri}>
-      <Container text style={{ marginTop: "7em" }} className="App">
-        <header className="App-header">
-          <Navbar />
-        </header>
+      <Container text style={{ marginTop: "2em" }} className="App">
+        <header className="App-header">{/* <Navbar /> */}</header>
         <main>
           <Routes />
         </main>

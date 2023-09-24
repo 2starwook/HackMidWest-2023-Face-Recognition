@@ -10,20 +10,21 @@
  * See the License for the specific language governing permissions and limitations under the License.
  */
 
-import React from 'react';
+import React from "react";
 
-import { createRoot } from 'react-dom/client';
-import { BrowserRouter } from 'react-router-dom';
-import 'semantic-ui-css/semantic.min.css';
-import './polyfills';
-import App from './App';
-import './index.css';
-import registerServiceWorker from './registerServiceWorker';
+import { createRoot } from "react-dom/client";
+import { BrowserRouter } from "react-router-dom";
+import "semantic-ui-css/semantic.min.css";
+import "./polyfills";
+import App from "./App";
+import "./index.css";
+import registerServiceWorker from "./registerServiceWorker";
 
-const container = document.getElementById('root');
+const container = document.getElementById("root");
 const root = createRoot(container);
 root.render(
   <BrowserRouter>
-    <App/>
-  </BrowserRouter>);
+    <App />
+  </BrowserRouter>
+);
 registerServiceWorker();

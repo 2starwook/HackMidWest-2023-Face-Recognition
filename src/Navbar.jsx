@@ -35,21 +35,15 @@ const Navbar = () => {
             <Link to="/">Okta-React Sample Project</Link>
           </Menu.Item>
           {authState.isAuthenticated && (
-            <Menu.Item id="messages-button">
-              <Icon name="mail outline" />
-              <Link to="/messages">Messages</Link>
-            </Menu.Item>
-          )}
-          {authState.isAuthenticated && (
-            <Menu.Item id="profile-button">
-              <Link to="/profile">Profile</Link>
-            </Menu.Item>
-          )}
-          {authState.isAuthenticated && (
             <Menu.Item id="profile-button">
               <Link to="/main">Main</Link>
             </Menu.Item>
           )}
+          {
+            <Menu.Item id="profile-button">
+              <Link to="/register">Register</Link>
+            </Menu.Item>
+          }
           {authState.isAuthenticated && (
             <Menu.Item id="logout-button" onClick={logout}>
               Logout

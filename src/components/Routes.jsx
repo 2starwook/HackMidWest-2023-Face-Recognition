@@ -16,10 +16,8 @@ import { LoginCallback } from "@okta/okta-react";
 import { RequiredAuth } from "./SecureRoute";
 import Home from "../pages/Home";
 import Loading from "./Loading";
-import Messages from "../pages/Messages";
-import Profile from "../pages/Profile";
 import Main from "../pages/Main";
-import Bridge from "../pages/Bridge"
+import Register from "../pages/Register";
 
 const AppRoutes = () => {
   return (
@@ -29,18 +27,10 @@ const AppRoutes = () => {
         path="login/callback"
         element={<LoginCallback loadingElement={<Loading />} />}
       />
-      <Route path="/messages" element={<RequiredAuth />}>
-        <Route path="" element={<Messages />} />
-      </Route>
-      <Route path="/profile" element={<RequiredAuth />}>
-        <Route path="" element={<Profile />} />
-      </Route>
       <Route path="/main" element={<RequiredAuth />}>
         <Route path="" element={<Main />} />
       </Route>
-      <Route path="/bridge" element={<RequiredAuth />}>
-        <Route path="" element={<Bridge />} />
-      </Route>
+      <Route path="/register" element={<Register />} />
     </Routes>
   );
 };
