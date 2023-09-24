@@ -98,7 +98,7 @@ const Home = () => {
         </div>
         <div className="components">
           <div className="centerFlexCol">
-            <h1>CapVision</h1>
+            <h1>HEA-CA</h1>
             <br />
 
             {authState.isAuthenticated && !userInfo && (
