@@ -31,39 +31,43 @@ const Main = () => {
   const [isPlaying, setIsPlaying] = useState(false);
 
   const togglePlayPause = () => {
-    setIsPlaying(!isPlaying);
+    //setIsPlaying(!isPlaying);
   };
 
   const handleUploadProcessImage = (ev) => {
     ev.preventDefault();
-    const data = new FormData();
-    data.append("file", files[0]);
-    fetch("http://127.0.0.1:5000/upload", {
-      method: "POST",
-      mode: "no-cors",
-      body: data,
-      headers: {
-        "Access-Control-Allow-Origin": "*",
-      },
-    }).then((response) => {
-      response.json().then((body) => {
-        this.setState({ imageURL: `http://localhost:5000/${body.file}` });
-      });
-    });
-    fetch("http://127.0.0.1:5000/process", {
-      method: "GET",
-      mode: "cors",
-    })
-      .then((response) => {
-        return response.json();
-      })
-      .then((res) => {
-        setResData({
-          path: res.path,
-          numOfPerson: res.n,
+    setIsPlaying(true);
+    setTimeout(() => {
+      const data = new FormData();
+      data.append("file", files[0]);
+      fetch("http://127.0.0.1:5000/upload", {
+        method: "POST",
+        mode: "no-cors",
+        body: data,
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+        },
+      }).then((response) => {
+        response.json().then((body) => {
+          this.setState({ imageURL: `http://localhost:5000/${body.file}` });
         });
       });
-    setDoneAnalyzing(true);
+      fetch("http://127.0.0.1:5000/process", {
+        method: "GET",
+        mode: "cors",
+      })
+        .then((response) => {
+          return response.json();
+        })
+        .then((res) => {
+          setResData({
+            path: res.path,
+            numOfPerson: res.n,
+          });
+        });
+      setDoneAnalyzing(true);
+      setIsPlaying(false);
+    }, 5000);
   };
 
   useEffect(() => {
@@ -116,8 +120,18 @@ const Main = () => {
           }}
         >
           <div className="resultBox">
-            {resData.path && <img src={resData.path} alt="Analyzed result" />}
-            <h2>Analysis complete!</h2>
+            {resData.path && (
+              <img
+                src="./backend/upload/res.jpg"
+                alt="Analyzed result"
+                style={{
+                  width: "100%",
+                  objectFit: "contain",
+                  borderRadius: "1rem",
+                }}
+              />
+            )}
+            <h2>Analysis complete! {resData.numOfPerson} Found!</h2>
             <br></br>
             <div className="resultBoxOptions">
               <a onClick={() => setDoneAnalyzing(false)}>
@@ -175,18 +189,20 @@ const Main = () => {
             )}
 
             <a onClick={handleUploadProcessImage}>
-              <div className="btn btn_secondary">
+              <div
+                className={`btn btn_secondary ${
+                  files.length === 0 ? "disabled" : ""
+                }`}
+              >
                 <p>Start</p>
               </div>
             </a>
             <br></br>
             <a>
-              <div className="btn btn_primary">
+              {/* <div className="btn btn_primary">
                 <p>Download</p>
-              </div>
+              </div> */}
             </a>
-            <p>{resData.path}</p>
-            <p>{resData.numOfPerson}</p>
             <div className="circle">
               <span className="circle__btn" onClick={togglePlayPause}>
                 <IonIcon icon={isPlaying ? pauseIcon : playIcon} />

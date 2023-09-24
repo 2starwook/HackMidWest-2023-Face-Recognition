@@ -26,7 +26,7 @@ class Face_recognition_model:
             y2 = int(row[3])
             d = int(row[5])
             if d == 0:  # human is zero index
-                cv2.rectangle(image, (x1, y1), (x2, y2), (0, 255, 0), 4)
+                cv2.rectangle(image, (x1, y1), (x2, y2), (252, 93, 109), 4)
                 count += 1
         if save_image:
             cv2.imwrite(f"{config.PATH_RESULT_IMAGE}", image)
