@@ -29,20 +29,20 @@ const Main = () => {
   const handleUploadImage = (ev) => {
     ev.preventDefault();
     const data = new FormData();
-    data.append('file', files[0]);
-    fetch('http://127.0.0.1:5000/upload', {
-      method: 'POST',
-      mode: 'no-cors',
+    data.append("file", files[0]);
+    fetch("http://127.0.0.1:5000/upload", {
+      method: "POST",
+      mode: "no-cors",
       body: data,
       headers: {
-        'Access-Control-Allow-Origin': '*'
-      }
+        "Access-Control-Allow-Origin": "*",
+      },
     }).then((response) => {
       response.json().then((body) => {
         this.setState({ imageURL: `http://localhost:5000/${body.file}` });
       });
     });
-  }
+  };
 
   useEffect(() => {
     if (!authState || !authState.isAuthenticated) {
@@ -78,6 +78,21 @@ const Main = () => {
   return (
     <>
       <div className="container">
+        <div className="componentsOptions">
+          <div class="icon">
+            <Link to="/">
+              <div class="icon__home">
+                <IonIcon icon={homeIcon} />
+              </div>
+            </Link>
+            <div class="icon__account">
+              <IonIcon icon={personIcon} />
+            </div>
+            <div class="icon__settings">
+              <IonIcon icon={settingsIcon} />
+            </div>
+          </div>
+        </div>
         <div className="components">
           <div className="rightFlex">
             <div class="switch">
@@ -128,20 +143,6 @@ const Main = () => {
               <span
                 className={`circle__back-2 ${isPlaying ? "" : "paused"}`}
               ></span>
-            </div>
-            <br />
-            <div class="icon">
-              <Link to="/">
-                <div class="icon__home">
-                  <IonIcon icon={homeIcon} />
-                </div>
-              </Link>
-              <div class="icon__account">
-                <IonIcon icon={personIcon} />
-              </div>
-              <div class="icon__settings">
-                <IonIcon icon={settingsIcon} />
-              </div>
             </div>
           </div>
         </div>

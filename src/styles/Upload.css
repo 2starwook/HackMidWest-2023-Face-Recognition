@@ -16,3 +16,10 @@
     inset -0.2rem -0.2rem 0.5rem var(--white);
   border-radius: 1rem;
 }
+
+.centerFlexCol {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}

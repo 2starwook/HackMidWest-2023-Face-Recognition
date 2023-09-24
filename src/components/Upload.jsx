@@ -2,6 +2,8 @@
 
 import React, { useCallback } from "react";
 import { useDropzone } from "react-dropzone";
+import { cubeOutline } from "ionicons/icons";
+import { IonIcon } from "@ionic/react";
 
 import "../styles/Upload.css";
 
@@ -17,12 +19,16 @@ const Upload = ({ setFiles }) => {
 
   return (
     <div {...getRootProps()} className="upload-container">
-      <input {...getInputProps()} />
-      {isDragActive ? (
-        <p>Drop the files here ...</p>
-      ) : (
-        <p>Drop or Select Files</p>
-      )}
+      <div className="centerFlexCol">
+        <input {...getInputProps()} />
+        <IonIcon icon={cubeOutline} size="large" />
+        <br />
+        {isDragActive ? (
+          <p>Drop the files here ...</p>
+        ) : (
+          <p>Drop or Select Files</p>
+        )}
+      </div>
     </div>
   );
 };

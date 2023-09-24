@@ -34,7 +34,6 @@ h1 {
   -webkit-box-align: center;
   align-items: center;
   font-family: "Poppins", sans-serif;
-  background: var(--greyLight-1);
 }
 
 .components {
