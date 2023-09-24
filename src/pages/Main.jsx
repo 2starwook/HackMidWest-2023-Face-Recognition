@@ -20,6 +20,9 @@ const Main = () => {
   const [userInfo, setUserInfo] = useState(null);
   const [files, setFiles] = useState([]);
 
+  /* Check if analyze is done */
+  const [doneAnalyzing, setDoneAnalyzing] = useState(false);
+
   /* For Start Button */
   const [isPlaying, setIsPlaying] = useState(false);
 
@@ -43,6 +46,7 @@ const Main = () => {
         this.setState({ imageURL: `http://localhost:5000/${body.file}` });
       });
     });
+    setDoneAnalyzing(true);
   };
 
   useEffect(() => {
