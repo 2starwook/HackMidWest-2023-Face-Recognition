@@ -1,22 +1,11 @@
 /*
 
-    Home.css
-    Stylesheet for Home Component 
+    Register.css
+    Stylesheet for Main Component 
 
 */
 
 :root {
-  --primary-light: #8abdff;
-  --primary: #6d5dfc;
-  --primary-dark: #5b0eeb;
-  --white: #ffffff;
-  --greyLight-1: #e4ebf5;
-  --greyLight-2: #c8d0e7;
-  --greyLight-3: #bec8e4;
-  --greyDark: #9baacf;
-}
-
-html[data-theme="dark"] {
   --primary-light: #00fff1;
   --primary: #00fff1;
   --primary-dark: #00fff1;
@@ -27,19 +16,8 @@ html[data-theme="dark"] {
   --greyDark: #6f6f6f;
 }
 
-html[data-theme="light"] {
-  --primary-light: #8abdff;
-  --primary: #6d5dfc;
-  --primary-dark: #5b0eeb;
-  --white: #ffffff;
-  --greyLight-1: #e4ebf5;
-  --greyLight-2: #c8d0e7;
-  --greyLight-3: #bec8e4;
-  --greyDark: #9baacf;
-}
-
 body {
-  font-family: "Poppins";
+  font-family: "Poppins", sans-serif;
 }
 
 h1 {
@@ -51,25 +29,14 @@ h1 {
   min-height: 90vh;
   display: -webkit-box;
   display: flex;
+  -webkit-box-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  align-items: center;
   font-family: "Poppins", sans-serif;
 }
 
-.components {
-  font-family: "Poppins", sans-serif;
-  color: var(--greyDark);
-  background: var(--greyLight-1);
-  border-radius: 3rem;
-  box-shadow: 0.8rem 0.8rem 1.4rem var(--greyLight-2),
-    -0.2rem -0.2rem 1.8rem var(--white);
-  padding: 2rem;
-  grid-template-columns: 17.6rem 19rem 20.4rem;
-  grid-template-rows: repeat(autofit, -webkit-min-content);
-  grid-template-rows: repeat(autofit, min-content);
-  grid-column-gap: 5rem;
-  grid-row-gap: 2.5rem;
-}
-
-.componentsSide {
+.componentsOptions {
   width: 13vh;
   font-family: "Poppins", sans-serif;
   background: var(--greyLight-1);
@@ -86,11 +53,38 @@ h1 {
   height: 30vh;
 }
 
+.components {
+  width: 70vh;
+  font-family: "Poppins", sans-serif;
+  color: var(--greyDark);
+  background: var(--greyLight-1);
+  border-radius: 3rem;
+  box-shadow: 0.8rem 0.8rem 1.4rem var(--greyLight-2),
+    -0.2rem -0.2rem 1.8rem var(--white);
+  padding: 2rem;
+  grid-template-columns: 17.6rem 19rem 20.4rem;
+  grid-template-rows: repeat(autofit, -webkit-min-content);
+  grid-template-rows: repeat(autofit, min-content);
+  grid-column-gap: 5rem;
+  grid-row-gap: 2.5rem;
+}
+
 .centerFlexCol {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+}
+
+.rightFlex {
+  display: flex;
+  justify-content: right;
+}
+
+.flexRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 /*  BUTTONS  */
@@ -111,7 +105,6 @@ h1 {
   -webkit-transition: 0.3s ease;
   transition: 0.3s ease;
 }
-
 .btn_primary {
   grid-column: 1 / 2;
   grid-row: 4 / 5;
@@ -144,104 +137,20 @@ h1 {
   font-size: 1.1rem;
 }
 
-/*  SWITCH  */
-.switch {
-  margin-top: 0rem;
-  margin-bottom: 1rem;
-  grid-column: 1 / 2;
-  display: grid;
-  grid-template-columns: repeat(2, -webkit-min-content);
-  grid-template-columns: repeat(2, min-content);
-  justify-self: center;
-}
-.switch input {
-  display: none;
-}
-.switch_1,
-.switch_2 {
-  width: 6rem;
-}
-.switch_1 label,
-.switch_2 label {
-  display: -webkit-box;
-  display: flex;
-  -webkit-box-align: center;
-  align-items: center;
-  width: 100%;
-  height: 3rem;
-  box-shadow: 0.3rem 0.3rem 0.6rem var(--greyLight-2),
-    -0.2rem -0.2rem 0.5rem var(--white);
-  background: rgba(255, 255, 255, 0);
-  position: relative;
-  cursor: pointer;
-  border-radius: 1.6rem;
-}
-.switch_1 label::after,
-.switch_2 label::after {
-  content: "";
-  position: absolute;
-  left: 0.4rem;
-  width: 2.1rem;
-  height: 2.1rem;
-  border-radius: 50%;
-  background: var(--greyDark);
-  -webkit-transition: all 0.4s ease;
-  transition: all 0.4s ease;
-}
-.switch_1 label::before,
-.switch_2 label::before {
-  content: "";
-  width: 100%;
-  height: 100%;
-  border-radius: inherit;
-  background: linear-gradient(
-    330deg,
-    var(--primary-dark) 0%,
-    var(--primary) 50%,
-    var(--primary-light) 100%
-  );
-  opacity: 0;
-  -webkit-transition: all 0.4s ease;
-  transition: all 0.4s ease;
-}
-.switch input:checked ~ label::before {
-  opacity: 1;
-}
-.switch input:checked ~ label::after {
-  left: 57%;
-  background: var(--greyLight-1);
-}
-
-/*  Logos  */
-.my-logo {
-  width: 28px;
-  height: 28px;
-  filter: invert(36%) sepia(100%) saturate(3324%) hue-rotate(234deg)
-    brightness(103%) contrast(98%);
-}
-
-.okta-logo {
-  width: 28px;
-  height: 28px;
-  filter: invert(43%) sepia(52%) saturate(613%) hue-rotate(167deg)
-    brightness(94%) contrast(94%);
-}
-
-.logos {
+/*  ICONS  */
+.icon {
   margin-top: 0.5rem;
   grid-column: 3 / 4;
   grid-row: 4 / 5;
   display: -webkit-box;
   display: flex;
-  flex-direction: column;
   width: 15vw;
-  height: 100%;
   -webkit-box-pack: justify;
   justify-content: space-between;
 }
-.logos__account,
-.logos__home,
-.logos__settings {
+.icon__account,
+.icon__home,
+.icon__settings {
   width: 4rem;
   height: 4rem;
   border-radius: 50%;
@@ -259,15 +168,61 @@ h1 {
   -webkit-transition: all 0.5s ease;
   transition: all 0.5s ease;
 }
-.logos__account:active,
-.logos__home:active,
-.logos__settings:active {
+.icon__account:active,
+.icon__home:active,
+.icon__settings:active {
   box-shadow: inset 0.2rem 0.2rem 0.5rem var(--greyLight-2),
     inset -0.2rem -0.2rem 0.5rem var(--white);
   color: var(--primary);
 }
-.logos__account:hover,
-.logos__home:hover,
-.logos__settings:hover {
+.icon__account:hover,
+.icon__home:hover,
+.icon__settings:hover {
   color: var(--primary);
+}
+
+/*  FORM  */
+.form {
+  grid-column: 3 / 4;
+  grid-row: 3 / 4;
+}
+.form__input {
+  width: 20.4rem;
+  height: 4rem;
+  border: none;
+  border-radius: 1rem;
+  font-size: 1.1rem;
+  padding-left: 1.4rem;
+  box-shadow: inset 0.2rem 0.2rem 0.5rem var(--greyLight-2),
+    inset -0.2rem -0.2rem 0.5rem var(--white);
+  background: none;
+  font-family: inherit;
+  color: var(--greyDark);
+  transition: box-shadow 1s ease-in-out;
+}
+.form__input::-webkit-input-placeholder {
+  color: var(--greyLight-3);
+}
+.form__input::-moz-placeholder {
+  color: var(--greyLight-3);
+}
+.form__input:-ms-input-placeholder {
+  color: var(--greyLight-3);
+}
+.form__input::-ms-input-placeholder {
+  color: var(--greyLight-3);
+}
+.form__input::placeholder {
+  color: var(--greyLight-3);
+}
+.form__input:focus {
+  outline: none;
+  box-shadow: 0.3rem 0.3rem 0.6rem var(--greyLight-2),
+    -0.2rem -0.2rem 0.5rem var(--white);
+}
+
+.submitting {
+  background-color: #f00; /* Change color */
+  transform: scale(1.1); /* Scale up */
+  transition: all 0.3s ease; /* Animate changes */
 }
