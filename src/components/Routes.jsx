@@ -17,8 +17,8 @@ import { RequiredAuth } from "./SecureRoute";
 import Home from "../pages/Home";
 import Loading from "./Loading";
 import Main from "../pages/Main";
-import Register from "../pages/Register";
 import Uploads from "../pages/Uploads";
+import Register from "../pages/Register";
 
 const AppRoutes = () => {
   return (
