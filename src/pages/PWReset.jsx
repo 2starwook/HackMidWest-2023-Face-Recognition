@@ -10,6 +10,26 @@ import { Link } from "react-router-dom";
 import "../styles/Register.css";
 
 const PWReset = () => {
+  const [email, setEmail] = useState("")
+
+  const handleEmailChange = (event) => {
+    setEmail(event.target.value);
+  };
+
+  const handleResetPWD = () => {
+    ev.preventDefault();
+    const data = new FormData();
+    data.append("email", email);
+    fetch("http://127.0.0.1:5000/resetpassword", {
+      method: "POST",
+      mode: "no-cors",
+      body: data,
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+      },
+    });
+  };
+
   return (
     <>
       <div className="container">
@@ -33,10 +53,10 @@ const PWReset = () => {
           <div className="centerFlexCol">
             <h1>Reset Password</h1>
             <div class="form">
-              <input type="text" class="form__input" placeholder="Email" />
+              <input type="text" value={email} onChange={handleEmailChange} class="form__input" placeholder="Email" />
             </div>
             <br />
-            <a>
+            <a onClick={handleResetPWD}>
               <div className="btn btn_secondary">
                 <p>Send Reset Link</p>
               </div>

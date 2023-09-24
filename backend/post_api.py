@@ -29,3 +29,10 @@ def create_user():
     mobilephone = request.form['mobilePhone']
     is_created = okta.create_user(firstname, lastname, email, mobilephone)
     return '200 OK'
+
+@app.route('/resetpassword', methods=['POST'])
+@cross_origin()
+def reset_password():
+    email = request.form['email']
+    is_successful = okta.reset_password(email)
+    return '200 OK'
