@@ -7,6 +7,7 @@ import {
   person as personIcon,
   settings as settingsIcon,
 } from "ionicons/icons";
+import { closeCircle as closeIcon } from "ionicons/icons";
 import { Link } from "react-router-dom";
 
 /* For React File Upload & Download @Peter */
@@ -26,7 +27,7 @@ const Main = () => {
     setIsPlaying(!isPlaying);
   };
 
-  const handleUploadImage = (ev) => {
+  const handleUploadProcessImage = (ev) => {
     ev.preventDefault();
     const data = new FormData();
     data.append("file", files[0]);
@@ -77,6 +78,33 @@ const Main = () => {
 
   return (
     <>
+      {doneAnalyzing && (
+        <div
+          style={{
+            position: "fixed",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            backgroundColor: "rgba(0, 0, 0, 0.5)",
+            color: "white",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            zIndex: 9999,
+          }}
+        >
+          <div className="resultBox">
+            <h2>Analysis complete!</h2>
+            <br></br>
+            <div className="resultBoxOptions">
+              <div class="resultClose">
+                <IonIcon icon={closeIcon} />
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
       <div className="container">
         <div className="componentsOptions">
           <div class="icon">
@@ -122,7 +150,7 @@ const Main = () => {
               </>
             )}
 
-            <a onClick={handleUploadImage}>
+            <a onClick={handleUploadProcessImage}>
               <div className="btn btn_secondary">
                 <p>Start</p>
               </div>
@@ -133,6 +161,8 @@ const Main = () => {
                 <p>Download</p>
               </div>
             </a>
+            <p>{data.path}</p>
+            <p>{data.numOfPerson}</p>
             <div className="circle">
               <span className="circle__btn" onClick={togglePlayPause}>
                 <IonIcon icon={isPlaying ? pauseIcon : playIcon} />

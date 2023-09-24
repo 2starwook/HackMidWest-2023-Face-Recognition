@@ -5,7 +5,7 @@ import {
   person as personIcon,
   settings as settingsIcon,
 } from "ionicons/icons";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import "../styles/Register.css";
 
@@ -15,7 +15,9 @@ const Register = () => {
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [mobilePhone, setMobilePhone] = useState("");
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const navigate = useNavigate();
 
   const handleFirstNameChange = (event) => {
     setFirstName(event.target.value);
@@ -35,6 +37,7 @@ const Register = () => {
 
   const handleSubmit = (ev) => {
     ev.preventDefault();
+    setIsSubmitting(true);
     const data = new FormData();
     data.append("firstName", firstName);
     data.append("lastName", lastName);
@@ -52,7 +55,8 @@ const Register = () => {
         this.setState({ imageURL: `http://localhost:5000/${body.file}` });
       });
     });
-    setIsSubmitted(true);
+    navigate("/");
+    alert("Registration Complete! Please check your email.");
   };
 
   return (
@@ -125,7 +129,6 @@ const Register = () => {
           </div>
         </div>
       </div>
-      {isSubmitted && <Redirect to="/home" />}
     </>
   );
 };

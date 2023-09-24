@@ -16,6 +16,28 @@
   --greyDark: #9baacf;
 }
 
+html[data-theme="dark"] {
+  --primary-light: #00fff1;
+  --primary: #00fff1;
+  --primary-dark: #00fff1;
+  --white: #ffffff;
+  --greyLight-1: #6f6f6f;
+  --greyLight-2: #6f6f6f;
+  --greyLight-3: #6f6f6f;
+  --greyDark: #6f6f6f;
+}
+
+html[data-theme="light"] {
+  --primary-light: #8abdff;
+  --primary: #6d5dfc;
+  --primary-dark: #5b0eeb;
+  --white: #ffffff;
+  --greyLight-1: #e4ebf5;
+  --greyLight-2: #c8d0e7;
+  --greyLight-3: #bec8e4;
+  --greyDark: #9baacf;
+}
+
 body {
   font-family: "Poppins";
 }

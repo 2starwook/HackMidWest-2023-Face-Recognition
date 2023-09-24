@@ -22,6 +22,9 @@ import "../styles/Home.css";
 import "../Globals.css";
 
 const Home = () => {
+  const [darkMode, setDarkMode] = useState(() => {
+    return localStorage.getItem("darkMode") === "true";
+  });
   const { authState, oktaAuth } = useOktaAuth();
   const [userInfo, setUserInfo] = useState(null);
 
@@ -69,9 +72,11 @@ const Home = () => {
             <div class="logos__account">
               <img src={oktaLogo} className="okta-logo" />
             </div>
-            <div class="logos__settings">
-              <IonIcon icon={helpIcon} />
-            </div>
+            <a onClick={() => setDarkMode((prev) => !prev)}>
+              <div class="logos__settings">
+                <IonIcon icon={helpIcon} />
+              </div>
+            </a>
           </div>
         </div>
         <div className="components">
