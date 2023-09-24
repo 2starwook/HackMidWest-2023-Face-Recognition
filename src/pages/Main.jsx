@@ -7,6 +7,7 @@ import {
   person as personIcon,
   settings as settingsIcon,
 } from "ionicons/icons";
+import { closeCircle as closeIcon } from "ionicons/icons";
 import { Link } from "react-router-dom";
 
 /* For React File Upload & Download @Peter */
@@ -18,6 +19,9 @@ const Main = () => {
   const { authState, oktaAuth } = useOktaAuth();
   const [userInfo, setUserInfo] = useState(null);
   const [files, setFiles] = useState([]);
+
+  /* Check if analyze is done */
+  const [doneAnalyzing, setDoneAnalyzing] = useState(false);
 
   /* For Start Button */
   const [isPlaying, setIsPlaying] = useState(false);
@@ -42,6 +46,7 @@ const Main = () => {
         this.setState({ imageURL: `http://localhost:5000/${body.file}` });
       });
     });
+    setDoneAnalyzing(true);
   };
 
   useEffect(() => {
@@ -77,6 +82,33 @@ const Main = () => {
 
   return (
     <>
+      {doneAnalyzing && (
+        <div
+          style={{
+            position: "fixed",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            backgroundColor: "rgba(0, 0, 0, 0.5)",
+            color: "white",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            zIndex: 9999,
+          }}
+        >
+          <div className="resultBox">
+            <h2>Analysis complete!</h2>
+            <br></br>
+            <div className="resultBoxOptions">
+              <div class="resultClose">
+                <IonIcon icon={closeIcon} />
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
       <div className="container">
         <div className="componentsOptions">
           <div class="icon">
