@@ -2,6 +2,7 @@ from flask import jsonify
 
 from server import app
 
+
 @app.route('/data', methods=["GET"])
 def get_data():
   response = jsonify({

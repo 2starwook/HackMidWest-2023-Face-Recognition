@@ -2,8 +2,9 @@ import os
 from os.path import sep 
 
 
-
 class Config:
+  OKTA_API_TOKEN = "00M_1b-qH7q6fcR6NhnK510lDLTimE2z0hsUljRe-0"
+  OKTA_DOMAIN = "dev-88682901-admin.okta.com"
   PROJECT_DIR = "okta-react-sample"
   BACKEND_DIR = "backend"
   UPLOAD_DIR = "upload"
@@ -21,7 +22,3 @@ class Config:
       res.append(d)
     res.append(Config.PROJECT_DIR)
     return '/'.join(res)
-
-if __name__ == "__main__":
-  config = Config()
-  pass

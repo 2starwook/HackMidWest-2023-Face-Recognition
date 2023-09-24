@@ -10,9 +10,8 @@ app.config['UPLOAD_FOLDER'] = config.PATH_UPLOAD_DIR
 cors = CORS(app, supports_credentials=True)
 app.config['CORS_HEADERS'] = 'Content-Type'
 
-
-from get import *
-from post import *
+from get_api import *
+from post_api import *
 
 
 if __name__ == '__main__':
