@@ -1,7 +1,6 @@
 import os
 from os.path import sep
 from flask import session, request
-from werkzeug.utils import secure_filename
 from flask_cors import cross_origin
 
 import okta_api as okta
@@ -13,8 +12,7 @@ from server import app, config
 def upload():
     if not os.path.isdir(config.PATH_UPLOAD_DIR):
         os.mkdir(config.PATH_UPLOAD_DIR)
-    file = request.files['file'] 
-    filename = secure_filename(file.filename)
+    file = request.files['file']
     destination=sep.join([config.PATH_UPLOAD_DIR, config.IMAGE_FILE])
     file.save(destination)
     session['uploadFilePath']=destination
