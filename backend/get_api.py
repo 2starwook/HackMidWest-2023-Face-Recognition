@@ -1,13 +1,15 @@
 from flask import jsonify
 
-from server import app
+from backend.server import app, config, face_recognition_model
 
 
-@app.route('/data', methods=["GET"])
-def get_data():
+@app.route('/process', methods=["GET"])
+def process():
+  n = face_recognition_model.count_human(config.PATH_IMAGE)
+
   response = jsonify({
-      'Name':"geek",
-      "Age":"22",
-      "programming":"python"
+      'path': config.PATH_RESULT_IMAGE,
+      "n": n,
       })
   return response
+

@@ -4,12 +4,13 @@ from flask import session, request
 from werkzeug.utils import secure_filename
 from flask_cors import cross_origin
 
-from server import app, config
-import okta_api as okta
+import backend.okta_api as okta
+from backend.server import app, config
+
 
 @app.route('/upload', methods=['POST'])
 @cross_origin()
-def upload_file():
+def upload():
     if not os.path.isdir(config.PATH_UPLOAD_DIR):
         os.mkdir(config.PATH_UPLOAD_DIR)
     file = request.files['file'] 
