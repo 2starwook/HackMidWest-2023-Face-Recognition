@@ -32,12 +32,11 @@ const App = () => {
 
   return (
     <Security oktaAuth={oktaAuth} restoreOriginalUri={restoreOriginalUri}>
-      <Container text style={{ marginTop: "2em" }} className="App">
-        <header className="App-header">{/* <Navbar /> */}</header>
+      <div className="centerFlexCol">
         <main>
           <Routes />
         </main>
-      </Container>
+      </div>
     </Security>
   );
 };
