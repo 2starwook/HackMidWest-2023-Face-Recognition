@@ -11,11 +11,9 @@ const FileList = ({ files }) => {
   return (
     <ul>
       {files.map((file, index) => (
-        <li key={index}>
-          {file.name}
-          <button onClick={() => downloadFile(file)}>Download</button>
-        </li>
+        <li key={index}>{file.name}</li>
       ))}
+      <br />
     </ul>
   );
 };
