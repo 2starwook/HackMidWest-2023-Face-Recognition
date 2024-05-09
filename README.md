@@ -3,7 +3,7 @@ This project involves with the face recognition using YOLOv8, React frontend wit
 
 # PROJECT SETUP 
 
-1. Run server according to backend README instruction
+1. Run server according to README instruction in backend directory
 
 2. Install npm dependencies
     npm install
