@@ -11,7 +11,7 @@
   "dependencies": {
     "@ionic/react": "^7.4.1",
     "@okta/okta-auth-js": "7.4.2",
-    "@okta/okta-react": "^6.7.0",
+    "@okta/okta-react": "^6.8.0",
     "colors": "1.4.0",
     "file-saver": "^2.0.5",
     "ionicons": "^7.1.2",
