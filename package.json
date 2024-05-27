@@ -9,7 +9,7 @@
   },
   "proxy": "http://127.0.0.1:5000/",
   "dependencies": {
-    "@ionic/react": "^7.4.1",
+    "@ionic/react": "^8.2.0",
     "@okta/okta-auth-js": "7.4.2",
     "@okta/okta-react": "^6.7.0",
     "colors": "1.4.0",
